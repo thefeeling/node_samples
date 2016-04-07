@@ -1,8 +1,8 @@
 {
-  "name": "server_side_javascript",
+  "name": "express_passport",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,16 +10,13 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.1",
     "express": "^4.13.4",
     "express-mysql-session": "^1.0.0-rc.0",
     "express-session": "^1.13.0",
-    "jade": "^1.11.0",
-    "md5": "^2.1.0",
-    "multer": "^1.1.0",
-    "node-mysql": "^0.4.2",
-    "pbkdf2-password": "^1.1.0",
-    "session-file-store": "^0.2.0",
-    "sha256": "^0.2.0"
+    "express-sessions": "^1.0.5",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0"
   }
 }
