@@ -6,7 +6,6 @@ var FileStore  = require('session-file-store')(session);
 /*----------------------
 md5 - sha256 - bkfd2
 ------------------------*/
-
 var bkfd2Password = require("pbkdf2-password");
 var hasher = bkfd2Password();
 var app = express();
@@ -101,7 +100,7 @@ app.post('/auth/login', function(req,res){
 	for(var i = 0 ; i < users.length ; i++){
 		var user = users[i];
 		if(uname === user.username){
-			return hasher({password : pwd, salt     : user.salt}, function(err, pass, salt, hash){
+			return hasher({password : pwd, salt : user.salt}, function(err, pass, salt, hash){
 				if(hash === user.password){
 					req.session.displayName = user.displayName;
 					req.session.save(function(){

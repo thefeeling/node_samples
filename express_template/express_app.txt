@@ -1,0 +1,16 @@
+* [frontend]
+* [backend]
+  |- routes                   // app routes
+  |  |--route01.js            // 업무 도메인별 라우트 : ex) mypage, display, contents 등
+  |  |--...
+  |- models                   // app models
+  |  |--model01.js            // : 업무 도메인별 모델 정의 - ex) mypageDB, displayDB
+  |  |--...
+  |- config                   // app config(session, databases, other configs)
+  |  |--session.js            // :
+  |  |--log.js            
+  |- common                   // app common function(StringUtil, etc...)
+  |  |--func01.js
+  |- package.json             // npm packages
+  |- app.js                   // start app
+  |- environment.js           // product / development config
