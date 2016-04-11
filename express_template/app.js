@@ -6,7 +6,9 @@ require 3rd party modules
 var express      = require('express');
 var bodyParser   = require('body-parser');
 var cookieParser = require('cookie-parser');
-var cors         = require('cors')
+var session      = require('express-session');
+var flash        = require("connect-flash");
+var cors         = require('cors');
 var app          = express();
 
 /*
@@ -24,10 +26,13 @@ var routes       = require('./routes');                        // routes
 express default setting
 -------------------------------------------------
 */
+
 app.locals.pretty = true;
 app.use(express.static('public'));                    // static resource
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser('1234567890'));
+app.use(session());
+app.use(flash());
 app.use(cors());
 app.listen(3003, function(req,res){
 	console.log('Connected 3003 port');
@@ -38,5 +43,6 @@ app.listen(3003, function(req,res){
 express custom setting
 -------------------------------------------------
 */
-app.dbPool = database // db connection function add
+app.dbConn = database // db connection function add
+require('./config/authenticate')(app, database);
 routes(app);

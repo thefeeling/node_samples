@@ -76,33 +76,11 @@ app.get('/login', function(req,res){
     var html = '';
     if(req.isAuthenticated()){
         html = "로그인중"    
+        res.send(html);
     }
     else{
-        html = `
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <title></title>
-            </head>
-            <body>
-            <form action="/login" method="post">
-                <div>
-                    <label>UserId:</label>
-                    <input type="text" name="userid"/><br/>
-                </div>
-                <div>
-                    <label>Password:</label>
-                    <input type="password" name="password"/>
-                </div>
-                <div>
-                    <input type="submit" value="Submit"/>
-                </div>
-            </form>
-            </body>
-            </html>
-        `
+        res.redirect('/index.html');
     }
-    res.send(html);
 })
 
 
@@ -125,7 +103,23 @@ function ensureAuthenticated(req, res, next) {
     // 로그인이 안되어 있으면, login 페이지로 진행
     res.redirect('/index.html');
 }
-app.post('/login',
+app.post('/login', 
      passport.authenticate('local', { successRedirect: '/login_success',
                                       failureRedirect: '/login',
                                       failureFlash: true }));
+
+/*
+app.get('/logout', function(req,res){
+    if(req.user){
+        delete req.user
+        // 로그인이 안되어 있으면, login 페이지로 진행
+        res.redirect('/index.html');
+    }else{
+        res.send('로그인 정보가 없음');
+    }
+});
+*/
+
+app.get('/logout', function(req,res){
+    res.send(req.session);
+})

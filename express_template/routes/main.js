@@ -2,11 +2,12 @@ var mainModel = require('../models/mainModel');
 
 
 module.exports = function(app){
-	var model = mainModel(app.dbPool);
+	var model = mainModel(app.dbConn);
 	var suffix = "/main"
 
 	
-	app.route(suffix + '/m1').get(function(req,res){
+	app.route(suffix + '/m1')
+	.get(function(req,res){
 		var data = {
 			d : "Hello"
 		}
@@ -17,7 +18,8 @@ module.exports = function(app){
 	})
 
 
-	app.route(suffix + '/m2').get(function(req,res){
+	app.route(suffix + '/m2')
+	.get(function(req,res){
 		var result = model.main({})
 		result.then(function(rows){
 			console.log('mainRoutes-----');

@@ -44,13 +44,11 @@ var squel = require("squel");
 module.exports = function(conn){
 	var mainDao = {};
 	mainDao.main = function(param){
-		var sql = squel.select().from('topic', 'to')
-								.field('to.id')
-								.field('to.title')
-								.field('to.description')
-								.field('to.author')
-								.where('to.id > 2')
-								.toString();
+		var sql = squel.select()
+				.from('topic', 'to')
+				.field('to.id').field('to.title')
+				.field('to.description').field('to.author')
+				.where('to.id > 2').toString();
 
 		var topics = conn.single(sql)
 		return topics;
