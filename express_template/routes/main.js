@@ -5,20 +5,7 @@ module.exports = function(app){
 	var model = mainModel(app.dbConn);
 	var suffix = "/main"
 
-	
 	app.route(suffix + '/m1')
-	.get(function(req,res){
-		var data = {
-			d : "Hello"
-		}
-		res.send(data);
-	})
-	.post(function(req,res){
-		res.send('m1 post');
-	})
-
-
-	app.route(suffix + '/m2')
 	.get(function(req,res){
 		var result = model.main({})
 		result.then(function(rows){
@@ -33,5 +20,4 @@ module.exports = function(app){
 	.post(function(req,res){
 		res.send('m2 post');
 	})
-	//other routes..
 }

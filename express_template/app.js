@@ -43,6 +43,6 @@ app.listen(3003, function(req,res){
 express custom setting
 -------------------------------------------------
 */
-app.dbConn = database // db connection function add
-require('./config/authenticate')(app, database);
+app.dbConn = database                              // db connection function add
+require('./config/authenticate')(app, database);   // passport authentication config / authentication route
 routes(app);

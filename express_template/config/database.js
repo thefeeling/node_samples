@@ -67,6 +67,9 @@ module.exports = function(config){
 			return using(getTransaction(), function (connection) {
 				return callback(connection);
 			});
-		}		
+		},
+		connection : function(){
+			return getConnection();
+		}
 	}
 }
