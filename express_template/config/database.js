@@ -11,10 +11,10 @@ Promise.promisifyAll(require('mysql/lib/Pool').prototype);
 module.exports = function(config){
 	var pool  = mysql.createPool({
 		connectionLimit : config.connectionLimit,
-		host            : config.host,
-		user            : config.user,
-		password        : config.password,
-		database        : config.database
+		host: config.host,
+		user: config.user,
+		password: config.password,
+		database: config.database
 	});
 
 	// pool.on('connection', function (connection) {
@@ -45,7 +45,7 @@ module.exports = function(config){
 		});
 	}
 
-	
+
 	return {
 		single: function (sql, values) {
 			return using(getConnection(), function (connection) {

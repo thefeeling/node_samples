@@ -1,6 +1,4 @@
 var mainModel = require('../models/mainModel');
-
-
 module.exports = function(app){
 	var model = mainModel(app.dbConn);
 	var suffix = "/main"

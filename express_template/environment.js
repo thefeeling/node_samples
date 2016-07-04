@@ -7,7 +7,7 @@ module.exports = {
 		user            : 'root',
 		password        : '1234',
 		database        : 'o2',
-		connectionLimit : 100
+		connectionLimit : 5
 	},
 
 	development : {
