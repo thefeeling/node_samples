@@ -37,14 +37,18 @@ module.exports = function(app){
 
 	/**
 	 * 유저 세션 invalidate
-	 * @param  {[type]} '/logout'     [접근 URL]
-	 * @param  {[type]} function(req, res){}           [Request, Response]
+	 * @param  {[type]} '/logout'	[접근 URL]
+	 * @param  {[type]} function(req, res){} [Request, Response]
 	 */
 	app.get('/logout', function(req, res){
-		req.logout();
-	 	res.redirect('/');
+		if (req.user) {
+			req.logout();
+			res.redirect('/');
+		}else{
+			res.redirect('/main/m1');
+		}
 	});
-	
+
 	// ** redirect url **
 	// app.post('/login', passport.authenticate('local', { successRedirect: '/success',
 	// 													failureRedirect: '/failure',

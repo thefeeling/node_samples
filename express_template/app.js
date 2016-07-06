@@ -16,13 +16,15 @@ var app = express();
 custom modules(./config, ./routes)
 -------------------------------------------------
 */
+
 var env = require('./environment'); // env param
 var database = require('./config/database')(env.database); // database
 var routes = require('./routes'); // routes
 
 
 /**
- * [Exoress,js Default Setting]
+ * [pretty description]
+ * @type {Boolean}
  */
 app.locals.pretty = true;
 app.use(express.static('public')); // static resource
@@ -35,10 +37,19 @@ app.listen(3003, function(req,res){
 	console.log('Connected 3003 port');
 });
 
-/**
- * [express custom setting]
- * @type {[type]}
- */
+// Custom Middle Ware
+app.use(function (req, res, next) {
+	console.log('Time:', Date.now());
+	next();
+});
+
+
+
+/*
+-------------------------------------------------
+express custom setting
+-------------------------------------------------
+*/
 app.dbConn = database                              // db connection function add
 require('./config/authenticate')(app, database);   // passport authentication config / authentication route
 routes(app);

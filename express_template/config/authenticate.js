@@ -53,7 +53,6 @@ module.exports = function(app, dbConn){
 		done(null, user);
 	});
 
-
 	function ensureAuthenticated(req, res, next) {
 		// 로그인이 되어 있으면, 다음 파이프라인으로 진행
 		if (req.isAuthenticated()){
