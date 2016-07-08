@@ -186,12 +186,38 @@ app.use('/birds', birds);
 - 미들웨어를 선 처리
 - 개별 라우팅 주소 값에 맞는 라우팅 핸들러를 실행
 - HTTP 요청에 대한 응답을 실행
+
+
 ![express-diagram](http://i.imgur.com/oGUSkq8.png)
-![node_inspector](http://i.imgur.com/JaLZxzF.png)
 
 기본적으로, Request 및 Response는 객체이며 HTTP 요청과 응답과 관련된 매서드와 프로퍼티(상태값 등)을 가지고 있다. **Query String, Parameter, Body, HTTP Header 기타 등등** 심지어 xhr 요청 유무까지 확인 가능한 프로퍼티가 있다. 너무 많기에 관련된 내용은 하단 링크를 통하여 확인하도록 하자
 ### [요청 프로퍼티 & 매소드](http://expressjs.com/ko/4x/api.html#req)
 ### [응답 프로퍼티 & 매소드](http://expressjs.com/ko/4x/api.html#res)
 
 ## Template Engine
-## 프로세스 관리자
+```javascript
+// Setting
+app.set('view engine', 'jade');
+```
+```javascript
+// Router
+app.get('/', function (req, res) {
+      res.render('main', {msg : "HelloWorld!"});
+});
+```
+
+
+express에서 자주 사용하는 뷰 템플릿 엔진은 하단과 같다.
+- [jade(pug)](https://github.com/pugjs/pug)
+- [ejs](https://www.npmjs.com/package/ejs)
+- [handlebars](http://handlebarsjs.com/)
+
+React같이 View만을 전문적으로 처리하는 라이브러리가 유행이고, 동형(Isomorphic) 처리라고 하여 서버 사이드에서도 클라이언트 사이드(브라우저)와 같이 뷰를 렌더링하자 라는 테마가 요즘 유행이다.(하지만 나에게는 너무 어렵다...어려워....) 마지막으로 배우고 익혔던 AngularJS도 좋지만 이 녀석은 사용해야 할 성격이 분명히 존재하는거 같다(SEO가 필요한 사이트에서는 쥐약인듯)
+
+
+아무튼 express에서 뷰 렌더링이 필요하다면 위 3개정도가 가장 현실적으로 사용할만한 템플릿 엔진인것은 분명하다. 만약 뷰단까지 같이 셋팅이 되어 있는 프로젝트가 필요하다면 [Yeoman](http://yeoman.io/)이나 [Mega Boilerplate](http://megaboilerplate.com/)에서 필요한 리소스를 확보하면 된다.
+
+
+## 참고
+- [Express.js](http://expressjs.com/)
+- [Express.js Github page](https://github.com/expressjs)

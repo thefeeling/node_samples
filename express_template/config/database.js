@@ -24,6 +24,7 @@ module.exports = function(config){
 	// pool.on('enqueue', function () {
 	// 	console.log('Waiting for available connection slot');
 	// });
+
 	function getConnection() {
 		return pool.getConnectionAsync().disposer(function (connection) {
 			return connection.release();

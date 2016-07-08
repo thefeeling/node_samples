@@ -3,8 +3,14 @@ var commonMsg     = require('../common/commonMsg');
 module.exports = function(app){
 	var passport = app.passport;
 	var ensureAuthenticated = app.passport.ensureAuthenticated;
-	var suffix = "/auth"
 
+	var suffix = "/auth"
+	/**
+	 * 인증 페이지
+	 * @param  {[type]} suffix           +             '/login' [description]
+	 * @param  {[type]} function(req,res [description]
+	 * @return {[type]}                  [description]
+	 */
 	app.get(suffix + '/login', function(req,res){
 		var html = '';
 		if(req.isAuthenticated()){
@@ -16,6 +22,12 @@ module.exports = function(app){
 		}
 	})
 
+	/**
+	 * 인증 처리
+	 * @param  {[type]} '/login'                       [description]
+	 * @param  {[type]} passport.authenticate('local', {failureFlash: true, successRedirect: '/main/m1', failureRedirect: '/auth/login'} [description]
+	 * @return {[type]}                                [description]
+	 */
 	app.post('/login', passport.authenticate('local', {failureFlash: true, successRedirect: '/main/m1', failureRedirect: '/auth/login'}), function(req,res){
 		if(req.isAuthenticated()){
 			res.json(commonMsg.auth.success);
@@ -48,9 +60,4 @@ module.exports = function(app){
 			res.redirect('/main/m1');
 		}
 	});
-
-	// ** redirect url **
-	// app.post('/login', passport.authenticate('local', { successRedirect: '/success',
-	// 													failureRedirect: '/failure',
-	// 													failureFlash: true }));
 }

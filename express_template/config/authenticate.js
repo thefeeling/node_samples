@@ -53,10 +53,16 @@ module.exports = function(app, dbConn){
 		done(null, user);
 	});
 
+	/**
+	 * 세션 인증 확인 미들웨어
+	 * @param  {[type]}   req  [description]
+	 * @param  {[type]}   res  [description]
+	 * @param  {Function} next [description]
+	 * @return {[type]}        [description]
+	 */
 	function ensureAuthenticated(req, res, next) {
 		// 로그인이 되어 있으면, 다음 파이프라인으로 진행
 		if (req.isAuthenticated()){
-			console.log(req.user);
 			return next();
 		}
 		res.json(commonMsg.auth.fail);
